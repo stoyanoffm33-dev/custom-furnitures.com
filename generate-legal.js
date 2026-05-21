@@ -26,39 +26,40 @@ if (footerStart !== -1) {
     footerAndScripts = footerAndScripts.substring(footerStart);
 }
 
-// Convert relative asset paths to root-relative
-function makeRootRelative(content) {
+// Convert relative paths to subfolder-relative (prefix with ../)
+function makeSubfolderRelative(content) {
     return content
-        .replace(/href="css\/styles\.css"/g, 'href="/css/styles.css"')
-        .replace(/src="assets\//g, 'src="/assets/')
-        .replace(/href="assets\//g, 'href="/assets/')
-        .replace(/src="js\//g, 'src="/js/')
-        .replace(/href="index\.html"/g, 'href="/"')
-        .replace(/href="kitchen\.html"/g, 'href="/kitchen"')
-        .replace(/href="bedroom\.html"/g, 'href="/bedroom"')
-        .replace(/href="livingroom\.html"/g, 'href="/livingroom"')
-        .replace(/href="kids-rooms\.html"/g, 'href="/kids-rooms"')
-        .replace(/href="bathroom\.html"/g, 'href="/bathroom"')
-        .replace(/data-href-bg="kuhnya\.html"/g, 'data-href-bg="/kuhnya"')
-        .replace(/data-href-en="kitchen\.html"/g, 'data-href-en="/kitchen"')
-        .replace(/data-href-bg="spalnya\.html"/g, 'data-href-bg="/spalnya"')
-        .replace(/data-href-en="bedroom\.html"/g, 'data-href-en="/bedroom"')
-        .replace(/data-href-bg="vsekidnevna\.html"/g, 'data-href-bg="/vsekidnevna"')
-        .replace(/data-href-en="livingroom\.html"/g, 'data-href-en="/livingroom"')
-        .replace(/data-href-bg="detski-stai\.html"/g, 'data-href-bg="/detski-stai"')
-        .replace(/data-href-en="kids-rooms\.html"/g, 'data-href-en="/kids-rooms"')
-        .replace(/data-href-bg="banya\.html"/g, 'data-href-bg="/banya"')
-        .replace(/data-href-en="bathroom\.html"/g, 'data-href-en="/bathroom"')
-        .replace(/href="review\.html"/g, 'href="/review"')
-        .replace(/href="#contact"/g, 'href="/#contact"')
-        .replace(/href="#contact-form"/g, 'href="/#contact-form"')
-        .replace(/href="#quality-section"/g, 'href="/#quality-section"')
-        .replace(/href="#our-projects"/g, 'href="/#our-projects"')
-        .replace(/href="\#"/g, 'href="/"');
+        .replace(/href="css\/styles\.css"/g, 'href="../css/styles.css"')
+        .replace(/src="assets\//g, 'src="../assets/')
+        .replace(/href="assets\//g, 'href="../assets/')
+        .replace(/src="js\//g, 'src="../js/')
+        .replace(/href="index\.html"/g, 'href="../index.html"')
+        .replace(/href="kitchen\.html"/g, 'href="../kitchen.html"')
+        .replace(/href="bedroom\.html"/g, 'href="../bedroom.html"')
+        .replace(/href="livingroom\.html"/g, 'href="../livingroom.html"')
+        .replace(/href="kids-rooms\.html"/g, 'href="../kids-rooms.html"')
+        .replace(/href="bathroom\.html"/g, 'href="../bathroom.html"')
+        .replace(/data-href-bg="kuhnya\.html"/g, 'data-href-bg="../kuhnya.html"')
+        .replace(/data-href-en="kitchen\.html"/g, 'data-href-en="../kitchen.html"')
+        .replace(/data-href-bg="spalnya\.html"/g, 'data-href-bg="../spalnya.html"')
+        .replace(/data-href-en="bedroom\.html"/g, 'data-href-en="../bedroom.html"')
+        .replace(/data-href-bg="vsekidnevna\.html"/g, 'data-href-bg="../vsekidnevna.html"')
+        .replace(/data-href-en="livingroom\.html"/g, 'data-href-en="../livingroom.html"')
+        .replace(/data-href-bg="detski-stai\.html"/g, 'data-href-bg="../detski-stai.html"')
+        .replace(/data-href-en="kids-rooms\.html"/g, 'data-href-en="../kids-rooms.html"')
+        .replace(/data-href-bg="banya\.html"/g, 'data-href-bg="../banya.html"')
+        .replace(/data-href-en="bathroom\.html"/g, 'data-href-en="../bathroom.html"')
+        .replace(/href="review\.html"/g, 'href="../review.html"')
+        .replace(/href="terms\/index\.html"/g, 'href="../terms/index.html"')
+        .replace(/href="privacy\/index\.html"/g, 'href="../privacy/index.html"')
+        .replace(/href="#contact"/g, 'href="../index.html#contact"')
+        .replace(/href="#contact-form"/g, 'href="../index.html#contact-form"')
+        .replace(/href="#quality-section"/g, 'href="../index.html#quality-section"')
+        .replace(/href="#our-projects"/g, 'href="../index.html#our-projects"');
 }
 
-headAndNav = makeRootRelative(headAndNav);
-footerAndScripts = makeRootRelative(footerAndScripts);
+headAndNav = makeSubfolderRelative(headAndNav);
+footerAndScripts = makeSubfolderRelative(footerAndScripts);
 
 // Modify main-content block start
 const mainContentStart = `
