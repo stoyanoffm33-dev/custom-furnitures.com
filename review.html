@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Custom Furnitures - Leave a Review</title>
+    <meta name="title" content="Custom Furnitures - Leave a Review">
+    <meta name="description" content="Share your thoughts on our custom furniture and service. We appreciate your feedback!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .header-btn {
+            margin-left: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--text-main);
+            color: #fff;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        
+        .review-page-container {
+            padding: 4rem var(--container-padding);
+            max-width: 650px;
+            margin: 0 auto 6rem;
+        }
+
+        .review-form-wrapper {
+            background: var(--card-bg);
+            padding: 3.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .review-form-wrapper h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .review-form-wrapper p {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .form-group label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            padding: 1.1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--card-gray);
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            background: var(--card-bg);
+            border-color: var(--text-main);
+            outline: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Star Rating Styles */
+        .star-rating-input {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 0.25rem;
+        }
+
+        .star-rating-input .star-btn {
+            font-size: 2.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.2s ease;
+            user-select: none;
+        }
+
+        .star-rating-input .star-btn.active,
+        .star-rating-input .star-btn.hovered {
+            color: #9d814c;
+            transform: scale(1.15);
+        }
+
+
+        /* Drag and Drop Zone */
+        .upload-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            background: var(--card-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .upload-zone:hover, .upload-zone.dragover {
+            border-color: var(--text-main);
+            background: var(--card-bg);
+        }
+        .upload-zone p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Preview Grid */
+        .upload-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .preview-thumb {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .preview-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .preview-thumb .remove-btn {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+            line-height: 1;
+            transition: background 0.2s;
+        }
+        .preview-thumb .remove-btn:hover {
+            background: rgba(220, 53, 69, 0.9);
+        }
+
+
+
+
+        /* Success screen styles */
+        .success-wrapper {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            color: #9d814c;
+            margin: 0 auto 1.5rem;
+        }
+
+        .success-wrapper h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .success-wrapper p {
+            margin-bottom: 2.5rem;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .btn-submit-review {
+            width: 100%;
+            padding: 1.1rem;
+            font-size: 1.05rem;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .review-form-wrapper {
+                padding: 2rem 1.5rem;
+            }
+            .review-form-wrapper h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="assets/logo-wide-no-bg.png" alt="Custom Furnitures" class="logo-img">
+            </a>
+            <div class="nav-links">
+                <a href="/" data-i18n="nav_home">Home</a>
+                <a href="/kitchen" data-href-bg="/kuhnya" data-href-en="/kitchen" data-i18n="nav_kitchen">Kitchen</a>
+                <a href="/bedroom" data-href-bg="/spalnya" data-href-en="/bedroom" data-i18n="nav_bedroom">Bedroom</a>
+                <a href="/livingroom" data-href-bg="/vsekidnevna" data-href-en="/livingroom" data-i18n="nav_living">Living Room</a>
+                <a href="/kids-rooms" data-href-bg="/detski-stai" data-href-en="/kids-rooms" data-i18n="nav_kids">Kids' Room</a>
+                <a href="/bathroom" data-href-bg="/banya" data-href-en="/bathroom" data-i18n="nav_bathroom">Bathroom</a>
+                <a href="/#contact" data-i18n="nav_contact">Contacts</a>
+            </div>
+            <div class="nav-icons">
+                <div class="lang-switch">
+                    <button id="lang-en" class="lang-btn active">EN</button>
+                    <span class="separator">|</span>
+                    <button id="lang-bg" class="lang-btn">BG</button>
+                </div>
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="header-btn" style="background: transparent; border: 1px solid var(--border-color); color: var(--text-main); margin-right: 0.5rem; padding: 0.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; cursor: pointer;"><i data-lucide="moon"></i></button>
+                <a href="tel:00359878359358" class="header-btn call-btn desktop-only" style="background: transparent; border: 1px solid var(--border-color); color: var(--text-main); margin-right: 0.5rem;"><i data-lucide="phone"></i></a>
+                <a href="/#contact-form" class="header-btn desktop-only" data-i18n="btn_header_quote">Request a Quote</a>
+                <button class="burger-btn" id="burger-menu-btn"><i data-lucide="menu"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-overlay">
+        <div class="mobile-menu" id="mobile-menu">
+            <button class="close-menu" id="close-menu-btn"><i data-lucide="x"></i></button>
+            <a href="/" data-i18n="nav_home">Home</a>
+            <a href="/kitchen" data-href-bg="/kuhnya" data-href-en="/kitchen" data-i18n="nav_kitchen">Kitchen</a>
+            <a href="/bedroom" data-href-bg="/spalnya" data-href-en="/bedroom" data-i18n="nav_bedroom">Bedroom</a>
+            <a href="/livingroom" data-href-bg="/vsekidnevna" data-href-en="/livingroom" data-i18n="nav_living">Living Room</a>
+            <a href="/kids-rooms" data-href-bg="/detski-stai" data-href-en="/kids-rooms" data-i18n="nav_kids">Kids' Room</a>
+            <a href="/bathroom" data-href-bg="/banya" data-href-en="/bathroom" data-i18n="nav_bathroom">Bathroom</a>
+            <a href="/#contact" data-i18n="nav_contact">Contacts</a>
+            <div class="nav-buttons">
+                <a href="tel:00359878359358" class="btn-light">
+                    <i data-lucide="phone" style="width: 20px;"></i>
+                    <span data-i18n="btn_hero_call">Call Us</span>
+                </a>
+                <a href="/#contact-form" class="btn-dark" data-i18n="btn_header_quote">Request a Quote</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="review-page-container">
+            <!-- Review Form -->
+            <div class="review-form-wrapper" id="review-form-container">
+                <h1 data-i18n="review_title" class="premium-heading">Leave Your Review</h1>
+                <p data-i18n="review_subtitle">Share your thoughts on our custom furniture and service</p>
+                
+                <form id="review-submit-form">
+
+
+                    <div class="form-group">
+                        <label data-i18n="review_form_name">Your Name</label>
+                        <input type="text" id="review-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="review_form_city">City</label>
+                        <input type="text" id="review-city" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="review_form_rating">Rating</label>
+                        <div class="star-rating-input" id="star-rating-container">
+                            <span class="star-btn active" data-value="1">★</span>
+                            <span class="star-btn active" data-value="2">★</span>
+                            <span class="star-btn active" data-value="3">★</span>
+                            <span class="star-btn active" data-value="4">★</span>
+                            <span class="star-btn active" data-value="5">★</span>
+                        </div>
+                        <input type="hidden" id="review-rating" value="5">
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="review_form_text">Your Review</label>
+                        <textarea id="review-text" required></textarea>
+                    </div>
+                    <!-- Photo Upload Section -->
+                    <div class="form-group" style="margin-bottom: 2rem;">
+                        <label data-i18n="review_upload_label">Review Photos (max 3)</label>
+                        <div class="upload-zone" id="upload-zone">
+                            <i data-lucide="camera" style="width: 32px; height: 32px; color: var(--text-muted);"></i>
+                            <p data-i18n="review_upload_drag">Drag & drop photos here or click to select</p>
+                            <input type="file" id="review-images-input" accept="image/*" multiple style="display: none;">
+                        </div>
+                        <div class="upload-preview-grid" id="preview-grid"></div>
+                    </div>
+                    <button type="submit" class="btn-dark btn-submit-review" data-i18n="review_form_submit">Submit Review</button>
+                </form>
+            </div>
+
+            <!-- Success Message -->
+            <div class="success-wrapper" id="success-container">
+                <div class="success-icon">
+                    <i data-lucide="badge-check" style="width: 100%; height: 100%;"></i>
+                </div>
+                <h2 data-i18n="review_success">Thank you! Your review has been submitted successfully.</h2>
+                <a href="/" class="btn-dark" data-i18n="review_back_home" style="display: inline-block;">Back to Home</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer fnji-footer">
+        <div class="fnji-top">
+            <div class="fnji-col">
+                <h3 data-i18n="footer_title">Quiet, Natural,<br>Meaningful Living</h3>
+                <p data-i18n="footer_desc" style="margin-top: 1rem; color: #a0a0a0;">Custom Furnitures is a lifestyle brand crafting quiet,<br>natural furniture for everyday living.</p>
+                <div class="social-icons" style="margin-top: 2rem; display: flex; gap: 1.5rem; align-items: center;">
+                    <a href="https://www.facebook.com/" target="_blank" class="social-link">
+                        <img src="assets/fb-logo.png" alt="Facebook">
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="social-link">
+                        <img src="assets/ig-logo.png" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+            <div class="fnji-col">
+                <h4 data-i18n="footer_quick">Quick Link</h4>
+                <a href="/" data-i18n="footer_home">Home</a>
+                <a href="/#quality-section" data-i18n="footer_product">Our Product</a>
+                <a href="/#our-projects" data-i18n="footer_featured">Featured Project</a>
+                <a href="/#contact-form" data-i18n="footer_contact">Contact</a>
+                <a href="/review" data-i18n="footer_leave_review">Leave us a review</a>
+            </div>
+            <div class="fnji-col">
+                <h4 data-i18n="footer_categories">Categories</h4>
+                <a href="/kitchen" data-href-bg="/kuhnya" data-href-en="/kitchen" data-i18n="nav_kitchen">Kitchen</a>
+                <a href="/bedroom" data-href-bg="/spalnya" data-href-en="/bedroom" data-i18n="nav_bedroom">Bedroom</a>
+                <a href="/livingroom" data-href-bg="/vsekidnevna" data-href-en="/livingroom" data-i18n="nav_living">Living Room</a>
+                <a href="/kids-rooms" data-href-bg="/detski-stai" data-href-en="/kids-rooms" data-i18n="nav_kids">Kids' Room</a>
+                <a href="/bathroom" data-href-bg="/banya" data-href-en="/bathroom" data-i18n="nav_bathroom">Bathroom</a>
+            </div>
+            <div class="fnji-col">
+                <h4 data-i18n="footer_loc_heading">Location</h4>
+                <p style="color: #a0a0a0; margin-bottom: 1rem;" data-i18n="footer_office">Office (Sofia): Mladost 2, bl. 225, 1799 Sofia, Bulgaria</p>
+                <p style="color: #a0a0a0;" data-i18n="footer_prod">Production (Vidin): West Storage Zone, 3700 Vidin, Bulgaria</p>
+                <a href="https://maps.app.goo.gl/4PCbvTsZhxR5nKgP8" target="_blank" style="color: #9d814c; text-decoration: underline; font-size: 0.9rem; margin-top: 0.5rem; display: inline-block;" data-i18n="footer_maps_btn">Google Maps Directions</a>
+            </div>
+            <div class="fnji-col">
+                <h4 data-i18n="footer_legal">Legal</h4>
+                <a href="/terms" data-i18n="footer_terms">Terms & Conditions</a>
+                <a href="/privacy" data-i18n="footer_privacy">Privacy Policy</a>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem;">
+                    <a href="tel:00359878359358" class="btn-light" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; padding: 0.8rem;"><i data-lucide="phone" style="width: 16px;"></i> <span data-i18n="btn_hero_call">Call Us</span></a>
+                    <a href="/#contact-form" class="btn-dark" style="display: flex; align-items: center; justify-content: center; background: var(--text-main); color: var(--bg-color); padding: 0.8rem;" data-i18n="btn_header_quote">Request a Quote</a>
+                </div>
+            </div>
+        </div>
+        <div class="fnji-massive-text">CUSTOM<br>FURNITURES</div>
+        <div class="fnji-bottom">
+            <p>Copyright 2026, All Right Reserved</p>
+        </div>
+    </footer>
+
+    <script src="js/lang.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // STAR RATING FUNCTIONALITY
+            const starContainer = document.getElementById('star-rating-container');
+            const stars = document.querySelectorAll('#star-rating-container .star-btn');
+            const ratingInput = document.getElementById('review-rating');
+            
+            stars.forEach(star => {
+                star.addEventListener('mouseenter', () => {
+                    const val = parseInt(star.getAttribute('data-value'));
+                    stars.forEach(s => {
+                        const sVal = parseInt(s.getAttribute('data-value'));
+                        if (sVal <= val) {
+                            s.classList.add('hovered');
+                        } else {
+                            s.classList.remove('hovered');
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseleave', () => {
+                    stars.forEach(s => s.classList.remove('hovered'));
+                });
+                
+                star.addEventListener('click', () => {
+                    const val = parseInt(star.getAttribute('data-value'));
+                    ratingInput.value = val;
+                    stars.forEach(s => {
+                        const sVal = parseInt(s.getAttribute('data-value'));
+                        if (sVal <= val) {
+                            s.classList.add('active');
+                        } else {
+                            s.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+
+
+            // IMAGE UPLOAD & CANVAS COMPRESSION
+            const uploadZone = document.getElementById('upload-zone');
+            const fileInput = document.getElementById('review-images-input');
+            const previewGrid = document.getElementById('preview-grid');
+            let uploadedImages = []; // stores base64 strings
+
+            // Click zone to open browser file dialog
+            if (uploadZone) {
+                uploadZone.addEventListener('click', () => {
+                    fileInput.click();
+                });
+
+                // Drag over styles
+                uploadZone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    uploadZone.classList.add('dragover');
+                });
+
+                uploadZone.addEventListener('dragleave', () => {
+                    uploadZone.classList.remove('dragover');
+                });
+
+                uploadZone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    uploadZone.classList.remove('dragover');
+                    if (e.dataTransfer.files.length > 0) {
+                        processFiles(e.dataTransfer.files);
+                    }
+                });
+            }
+
+            if (fileInput) {
+                fileInput.addEventListener('change', () => {
+                    if (fileInput.files.length > 0) {
+                        processFiles(fileInput.files);
+                    }
+                });
+            }
+
+            function processFiles(files) {
+                const maxPhotos = 3;
+                const remaining = maxPhotos - uploadedImages.length;
+                if (remaining <= 0) {
+                    alert("You can only upload a maximum of 3 photos.");
+                    return;
+                }
+
+                const filesArray = Array.from(files).slice(0, remaining);
+                
+                filesArray.forEach(file => {
+                    if (!file.type.startsWith('image/')) {
+                        alert("File must be an image!");
+                        return;
+                    }
+
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const img = new Image();
+                        img.onload = () => {
+                            // Resize image on canvas
+                            const canvas = document.createElement('canvas');
+                            let width = img.width;
+                            let height = img.height;
+                            const max_size = 600; // max size in px
+
+                            if (width > height) {
+                                if (width > max_size) {
+                                    height *= max_size / width;
+                                    width = max_size;
+                                }
+                            } else {
+                                if (height > max_size) {
+                                    width *= max_size / height;
+                                    height = max_size;
+                                }
+                            }
+
+                            canvas.width = width;
+                            canvas.height = height;
+                            
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(img, 0, 0, width, height);
+
+                            // Compress canvas to base64 jpeg
+                            const compressedBase64 = canvas.toDataURL('image/jpeg', 0.75);
+                            uploadedImages.push(compressedBase64);
+                            
+                            renderPreviews();
+                        };
+                        img.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            function renderPreviews() {
+                previewGrid.innerHTML = '';
+                uploadedImages.forEach((imgBase64, index) => {
+                    const thumb = document.createElement('div');
+                    thumb.className = 'preview-thumb';
+                    thumb.innerHTML = `
+                        <img src="${imgBase64}" alt="Upload Preview">
+                        <button type="button" class="remove-btn" data-index="${index}">&times;</button>
+                    `;
+                    previewGrid.appendChild(thumb);
+                });
+
+                // Attach remove click handlers
+                const removeBtns = previewGrid.querySelectorAll('.remove-btn');
+                removeBtns.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const idx = parseInt(btn.getAttribute('data-index'));
+                        uploadedImages.splice(idx, 1);
+                        renderPreviews();
+                    });
+                });
+            }
+
+            // FORM SUBMIT HANDLER
+            const form = document.getElementById('review-submit-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                e.stopPropagation(); // prevent global app.js form interceptor
+
+                const name = document.getElementById('review-name').value.trim();
+                const city = document.getElementById('review-city').value.trim();
+                const rating = parseInt(ratingInput.value);
+                const text = document.getElementById('review-text').value.trim();
+                
+                if (!name || !city || !text) return;
+
+                const newReview = {
+                    name,
+                    city,
+                    rating,
+                    text,
+                    date: new Date().toISOString()
+                };
+
+
+                // Add uploaded images if any
+                if (uploadedImages.length > 0) {
+                    newReview.images = uploadedImages;
+                }
+
+                // Get existing reviews
+                let reviews = [];
+                try {
+                    reviews = JSON.parse(localStorage.getItem('client_reviews')) || [];
+                    if (!Array.isArray(reviews)) reviews = [];
+                } catch (err) {
+                    reviews = [];
+                }
+
+                // Add new review at the beginning
+                reviews.unshift(newReview);
+                
+                // Save to localStorage
+                localStorage.setItem('client_reviews', JSON.stringify(reviews));
+
+                // Switch container views
+                document.getElementById('review-form-container').style.display = 'none';
+                document.getElementById('success-container').style.display = 'block';
+                
+                // Re-create icons in success screen if needed
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

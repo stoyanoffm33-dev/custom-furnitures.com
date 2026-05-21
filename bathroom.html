@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Custom Furnitures - Premium Bespoke Living</title>
+    <meta name="title" content="Custom Furnitures - Premium Bespoke Living">
+    <meta name="description" content="Discover our premium bespoke furniture solutions that bring a minimalist and luxurious look to your home. Quiet, natural, and meaningful living.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://custom-furnitures.com/">
+    <meta property="og:title" content="Custom Furnitures - Premium Bespoke Living">
+    <meta property="og:description" content="Discover our premium bespoke furniture solutions that bring a minimalist and luxurious look to your home. Quiet, natural, and meaningful living.">
+    <meta property="og:image" content="https://custom-furnitures.com/assets/logo-wide-no-bg.png">
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Additional custom styles for new sections */
+        .header-btn {
+            margin-left: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--text-main);
+            color: #fff;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        .benefits-section {
+            padding: 0 var(--container-padding);
+            max-width: 1600px;
+            margin: -2rem auto 5rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+        .benefit-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            flex: 1;
+            text-align: center;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .philosophy-section {
+            padding: 5rem var(--container-padding);
+            max-width: 1000px;
+            margin: 0 auto 6rem;
+            text-align: center;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 0 var(--container-padding);
+            max-width: 1600px;
+            margin: 0 auto 6rem;
+        }
+        .category-card {
+            background: var(--card-gray);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .category-card:hover { transform: translateY(-5px); }
+        .category-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .category-card p { margin-bottom: 2rem; }
+        
+        .case-study-section {
+            padding: 0 var(--container-padding);
+            max-width: 1600px;
+            margin: 0 auto 6rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .case-study-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+        }
+        .case-study-content h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+        .case-study-content p { margin-bottom: 1rem; font-size: 1.1rem; }
+        .case-study-content strong { color: var(--text-main); }
+        
+        .contact-section {
+            padding: 0 var(--container-padding);
+            max-width: 800px;
+            margin: 0 auto 8rem;
+        }
+        .contact-form-wrapper {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+        }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .form-group input[type="file"] { padding: 0.8rem; border: none; background: var(--card-gray); }
+        .footer-simple {
+            text-align: center;
+            padding-bottom: 4rem;
+        }
+        .footer-simple p { margin-bottom: 0.5rem; }
+        .footer-links { margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; }
+        .footer-links a:hover { color: var(--text-main); }
+        
+        /* Slider Sections */
+        .reviews-section, .previews-section {
+            padding: 0 var(--container-padding);
+            max-width: 1600px;
+            margin: 0 auto 6rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-main);
+        }
+
+        .slider-container {
+            width: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            padding-bottom: 1rem;
+        }
+        .slider-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 2rem;
+            width: max-content;
+        }
+
+        /* Review Card */
+        .review-card {
+            background: var(--card-gray);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            width: 350px;
+            scroll-snap-align: start;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .review-stars {
+            color: #9d814c;
+            font-size: 1.25rem;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            flex-grow: 1;
+            font-style: italic;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            margin: 0;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .author-info span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Preview Sliders */
+        .preview-category-block {
+            margin-bottom: 4rem;
+        }
+
+        .preview-category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-right: 1rem;
+        }
+
+        .preview-category-header h3 {
+            font-size: 1.75rem;
+            color: var(--text-main);
+        }
+        
+        .preview-category-header .view-all {
+            color: #9d814c;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.3s ease;
+        }
+        
+        .preview-category-header .view-all:hover {
+            opacity: 0.8;
+        }
+
+        .preview-img-wrapper {
+            width: 400px;
+            height: 300px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            scroll-snap-align: start;
+            cursor: pointer;
+            position: relative;
+            display: block;
+        }
+
+        .preview-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .preview-img-wrapper:hover img {
+            transform: scale(1.05);
+        }
+        
+        .preview-img-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.2), transparent 50%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .preview-img-wrapper:hover::after {
+            opacity: 1;
+        }
+        
+        /* Hero Video Styles */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .mobile-video {
+            display: none;
+        }
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .desktop-video { display: none; }
+            .mobile-video { display: block; }
+            .review-card {
+                width: 280px;
+                padding: 1.5rem;
+            }
+            .preview-img-wrapper {
+                width: 280px;
+                height: 220px;
+            }
+            .preview-category-header h3 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="assets/logo-wide-no-bg.png" alt="Custom Furnitures" class="logo-img">
+            </a>
+            <div class="nav-links">
+                <a href="/" data-i18n="nav_home">Home</a>
+                <a href="/kitchen" data-href-bg="/kuhnya" data-href-en="/kitchen" data-i18n="nav_kitchen">Kitchen</a>
+                <a href="/bedroom" data-href-bg="/spalnya" data-href-en="/bedroom" data-i18n="nav_bedroom">Bedroom</a>
+                <a href="/livingroom" data-href-bg="/vsekidnevna" data-href-en="/livingroom" data-i18n="nav_living">Living Room</a>
+                <a href="/kids-rooms" data-href-bg="/detski-stai" data-href-en="/kids-rooms" data-i18n="nav_kids">Kids' Room</a>
+                <a href="/bathroom" data-href-bg="/banya" data-href-en="/bathroom" data-i18n="nav_bathroom">Bathroom</a>
+                <a href="#contact" data-i18n="nav_contact">Contacts</a>
+            </div>
+            <div class="nav-icons">
+                <div class="lang-switch">
+                    <button id="lang-en" class="lang-btn active">EN</button>
+                    <span class="separator">|</span>
+                    <button id="lang-bg" class="lang-btn">BG</button>
+                </div>
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="header-btn" style="background: transparent; border: 1px solid var(--border-color); color: var(--text-main); margin-right: 0.5rem; padding: 0.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; cursor: pointer;"><i data-lucide="moon"></i></button>
+                <a href="tel:00359878359358" class="header-btn call-btn desktop-only" style="background: transparent; border: 1px solid var(--border-color); color: var(--text-main); margin-right: 0.5rem;"><i data-lucide="phone"></i></a>
+                <a href="#contact" class="header-btn desktop-only" data-i18n="btn_header_quote">Request a Quote</a>
+                <button class="burger-btn" id="burger-menu-btn"><i data-lucide="menu"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu-overlay" id="mobile-overlay">
+        <div class="mobile-menu" id="mobile-menu">
+            <button class="close-menu" id="close-menu-btn"><i data-lucide="x"></i></button>
+            <a href="/" data-i18n="nav_home">Home</a>
+            <a href="/kitchen" data-href-bg="/kuhnya" data-href-en="/kitchen" data-i18n="nav_kitchen">Kitchen</a>
+            <a href="/bedroom" data-href-bg="/spalnya" data-href-en="/bedroom" data-i18n="nav_bedroom">Bedroom</a>
+            <a href="/livingroom" data-href-bg="/vsekidnevna" data-href-en="/livingroom" data-i18n="nav_living">Living Room</a>
+            <a href="/kids-rooms" data-href-bg="/detski-stai" data-href-en="/kids-rooms" data-i18n="nav_kids">Kids' Room</a>
+            <a href="/bathroom" data-href-bg="/banya" data-href-en="/bathroom" data-i18n="nav_bathroom">Bathroom</a>
+            <a href="#contact" data-i18n="nav_contact">Contacts</a>
+            <div class="nav-buttons">
+                <a href="tel:00359878359358" class="btn-light">
+                    <i data-lucide="phone" style="width: 20px;"></i>
+                    <span data-i18n="btn_hero_call">Call Us</span>
+                </a>
+                <a href="#contact-form" class="btn-dark" data-i18n="btn_header_quote">Request a Quote</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        
+        <section class="page-header" style="padding: 4rem var(--container-padding) 2rem; text-align: center;">
+            <h1 data-i18n="cat_bathrooms" class="premium-heading">Category</h1>
+            <p data-i18n="cat_intro_bathrooms" class="category-subtitle" style="max-width: 600px; margin: 0 auto;">Functionality without compromising design. Explore our realizations and get inspired for your home.</p>
+        </section>
+
+        
+        <section class="benefits-section">
+            <div class="benefits-track">
+                <div class="benefit-card">
+                    <i data-lucide="shield-check" style="color: #9d814c;"></i>
+                    <span data-i18n="benefit_1">24-Month Warranty</span>
+                </div>
+                <div class="benefit-card">
+                    <i data-lucide="cuboid" style="color: #9d814c;"></i>
+                    <span data-i18n="benefit_2">Free 3D Project</span>
+                </div>
+                <div class="benefit-card">
+                    <i data-lucide="gem" style="color: #9d814c;"></i>
+                    <span data-i18n="benefit_3">Premium Materials & Hardware</span>
+                </div>
+                <!-- Duplicate for Marquee -->
+                <div class="benefit-card mobile-only">
+                    <i data-lucide="shield-check" style="color: #9d814c;"></i>
+                    <span data-i18n="benefit_1">24-Month Warranty</span>
+                </div>
+                <div class="benefit-card mobile-only">
+                    <i data-lucide="cuboid" style="color: #9d814c;"></i>
+                    <span data-i18n="benefit_2">Free 3D Project</span>
+                </div>
+                <div class="benefit-card mobile-only">
+                    <i data-lucide="gem" style="color: #9d814c;"></i>
+                    <span data-i18n="benefit_3">Premium Materials & Hardware</span>
+                </div>
+            </div>
+        </section>
+    
+
+        <section class="projects-grid">
+            
+            <div class="project-card" data-project-code="BA-01" data-project-titleKey="">
+                <img src="assets/bani/bath1.png" alt="Spa Sanctuary">
+                <div class="project-card-info">
+                    <h4 class="dynamic-title" data-title-bg="Спа Светилище" data-title-en="Spa Sanctuary">Spa Sanctuary</h4>
+                    <span>BA-01</span>
+                </div>
+            </div>
+            
+            <div class="project-card" data-project-code="BA-02" data-project-titleKey="">
+                <img src="assets/bani/bath2.png" alt="Marble Mirage">
+                <div class="project-card-info">
+                    <h4 class="dynamic-title" data-title-bg="Мраморен Мираж" data-title-en="Marble Mirage">Marble Mirage</h4>
+                    <span>BA-02</span>
+                </div>
+            </div>
+            
+            <div class="project-card" data-project-code="BA-03" data-project-titleKey="">
+                <img src="assets/bani/bath3.png" alt="Oceanic Bliss">
+                <div class="project-card-info">
+                    <h4 class="dynamic-title" data-title-bg="Океанско Блаженство" data-title-en="Oceanic Bliss">Oceanic Bliss</h4>
+                    <span>BA-03</span>
+                </div>
+            </div>
+            
+            <div class="project-card" data-project-code="BA-04" data-project-titleKey="">
+                <img src="assets/bani/bath4.png" alt="Stone & Light">
+                <div class="project-card-info">
+                    <h4 class="dynamic-title" data-title-bg="Камък и Светлина" data-title-en="Stone & Light">Stone & Light</h4>
+                    <span>BA-04</span>
+                </div>
+            </div>
+            
+            <div class="project-card" data-project-code="BA-05" data-project-titleKey="">
+                <img src="assets/bani/bath5.png" alt="Crystal Clear">
+                <div class="project-card-info">
+                    <h4 class="dynamic-title" data-title-bg="Кристална Яснота" data-title-en="Crystal Clear">Crystal Clear</h4>
+                    <span>BA-05</span>
+                </div>
+            </div>
+            
+            <div class="project-card" data-project-code="BA-06" data-project-titleKey="">
+                <img src="assets/bani/bath6.png" alt="Aqua Haven">
+                <div class="project-card-info">
+                    <h4 class="dynamic-title" data-title-bg="Аква Рай" data-title-en="Aqua Haven">Aqua Haven</h4>
+                    <span>BA-06</span>
+                </div>
+            </div>
+            
+            <div class="project-card" data-project-code="BA-07" data-project-titleKey="">
+                <img src="assets/bani/bath7.png" alt="Zen Rainfall">
+                <div class="project-card-info">
+                    <h4 class="dynamic-title" data-title-bg="Дзен Водопад" data-title-en="Zen Rainfall">Zen Rainfall</h4>
+                    <span>BA-07</span>
+                </div>
+            </div>
+            
+            <div class="project-card" data-project-code="BA-08" data-project-titleKey="">
+                <img src="assets/bani/bath8.png" alt="Slate Retreat">
+                <div class="project-card-info">
+                    <h4 class="dynamic-title" data-title-bg="Убежище от Шистови Скали" data-title-en="Slate Retreat">Slate Retreat</h4>
+                    <span>BA-08</span>
+                </div>
+            </div>
+            
+            <div class="project-card" data-project-code="BA-09" data-project-titleKey="">
+                <img src="assets/bani/bath9.png" alt="Spa Sanctuary">
+                <div class="project-card-info">
+                    <h4 class="dynamic-title" data-title-bg="Спа Светилище" data-title-en="Spa Sanctuary">Spa Sanctuary</h4>
+                    <span>BA-09</span>
+                </div>
+            </div>
+            
+        </section>
+
+        
+
+
+        <!-- Project Modal -->
+        <div id="project-modal" class="modal-overlay">
+            <div class="modal-container">
+                <button class="modal-close"><i data-lucide="x"></i></button>
+                <div class="modal-layout">
+                    <div class="modal-image-side">
+                        <img class="modal-img" src="" alt="Project">
+                    </div>
+                    <div class="modal-sidebar">
+                        <div class="sidebar-header">
+                            <h3 class="modal-title">Project Name</h3>
+                            <span class="modal-code">CODE-01</span>
+                        </div>
+                        <div class="sidebar-body">
+                            <p data-i18n="modal_desc_placeholder">Experience the perfect blend of functionality and modern design with our custom-made furniture solutions.</p>
+                        </div>
+                        <div class="sidebar-footer">
+                            <button class="btn-dark btn-similar" data-i18n="modal_btn_similar">Request a quote for a similar project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <section id="quality-section" class="partners-section" style="padding: 4rem var(--container-padding); background: transparent;">
+            <div class="partners-header">
+                <h2 data-i18n="partners_title" class="premium-heading">Zero Compromise in Quality</h2>
+                <p data-i18n="partners_subtitle">only the best materials</p>
+            </div>
+            <div class="partners-marquee">
+                <div class="marquee-content">
+                    <img src="assets/kronospan.png" alt="Kronospan">
+                    <img src="assets/blum.png" alt="Blum">
+                    <img src="assets/egger.png" alt="Egger">
+                    <img src="assets/kronospan.png" alt="Kronospan">
+                    <img src="assets/blum.png" alt="Blum">
+                    <img src="assets/egger.png" alt="Egger">
+                    <img src="assets/kronospan.png" alt="Kronospan">
+                    <img src="assets/blum.png" alt="Blum">
+                    <img src="assets/egger.png" alt="Egger">
+                </div>
+            </div>
+        </section>
+    
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-split-section">
+            <div class="contact-image-side">
+                <img id="contact-random-img" src="assets/kuhni/kitchen5.png" alt="Furniture">
+            </div>
+            <div class="contact-form-side" id="contact-form">
+                <div class="contact-form-inner">
+                    <h2 data-i18n="contact_heading" class="premium-heading">Contact Us</h2>
+                    <p data-i18n="contact_subheading">Send us an inquiry and we will get back to you to discuss the details of your project.</p>
+                    <form>
+                        <div class="form-group">
+                            <label data-i18n="form_name">Full Name</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="form_phone">Phone Number</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="form_email">Email Address</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="form_desc">Describe your project</label>
+                            <textarea id="contact-desc" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-dark" data-i18n="btn_form_submit">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- New FNJI style Footer -->
+    <footer class="site-footer fnji-footer">
+        <div class="fnji-top">
+            <div class="fnji-col">
+                <h3 data-i18n="footer_title">Quiet, Natural,<br>Meaningful Living</h3>
+                <p data-i18n="footer_desc" style="margin-top: 1rem; color: #a0a0a0;">Custom Furnitures is a lifestyle brand crafting quiet,<br>natural furniture for everyday living.</p>
+                <div class="social-icons" style="margin-top: 2rem; display: flex; gap: 1.5rem; align-items: center;">
+                    <a href="https://www.facebook.com/" target="_blank" class="social-link">
+                        <img src="assets/fb-logo.png" alt="Facebook">
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="social-link">
+                        <img src="assets/ig-logo.png" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+            <div class="fnji-col">
+                <h4 data-i18n="footer_quick">Quick Link</h4>
+                <a href="/" data-i18n="footer_home">Home</a>
+                <a href="#quality-section" data-i18n="footer_product">Our Product</a>
+                <a href="#our-projects" data-i18n="footer_featured">Featured Project</a>
+                <a href="#contact-form" data-i18n="footer_contact">Contact</a>
+                <a href="/review" data-i18n="footer_leave_review">Leave us a review</a>
+            </div>
+            <div class="fnji-col">
+                <h4 data-i18n="footer_categories">Categories</h4>
+                <a href="/kitchen" data-href-bg="/kuhnya" data-href-en="/kitchen" data-i18n="nav_kitchen">Kitchen</a>
+                <a href="/bedroom" data-href-bg="/spalnya" data-href-en="/bedroom" data-i18n="nav_bedroom">Bedroom</a>
+                <a href="/livingroom" data-href-bg="/vsekidnevna" data-href-en="/livingroom" data-i18n="nav_living">Living Room</a>
+                <a href="/kids-rooms" data-href-bg="/detski-stai" data-href-en="/kids-rooms" data-i18n="nav_kids">Kids' Room</a>
+                <a href="/bathroom" data-href-bg="/banya" data-href-en="/bathroom" data-i18n="nav_bathroom">Bathroom</a>
+            </div>
+            <div class="fnji-col">
+                <h4 data-i18n="footer_loc_heading">Location</h4>
+                <p style="color: #a0a0a0; margin-bottom: 1rem;" data-i18n="footer_office">Office (Sofia): Mladost 2, bl. 225, 1799 Sofia, Bulgaria</p>
+                <p style="color: #a0a0a0;" data-i18n="footer_prod">Production (Vidin): West Storage Zone, 3700 Vidin, Bulgaria</p>
+                <a href="https://maps.app.goo.gl/4PCbvTsZhxR5nKgP8" target="_blank" style="color: #9d814c; text-decoration: underline; font-size: 0.9rem; margin-top: 0.5rem; display: inline-block;" data-i18n="footer_maps_btn">Google Maps Directions</a>
+            </div>
+            <div class="fnji-col">
+                <h4 data-i18n="footer_legal">Legal</h4>
+                <a href="/terms" data-i18n="footer_terms">Terms & Conditions</a>
+                <a href="/privacy" data-i18n="footer_privacy">Privacy Policy</a>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem;">
+                    <a href="tel:00359878359358" class="btn-light" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; padding: 0.8rem;"><i data-lucide="phone" style="width: 16px;"></i> <span data-i18n="btn_hero_call">Call Us</span></a>
+                    <a href="#contact-form" class="btn-dark" style="display: flex; align-items: center; justify-content: center; background: var(--text-main); color: var(--bg-color); padding: 0.8rem;" data-i18n="btn_header_quote">Request a Quote</a>
+                </div>
+            </div>
+        </div>
+        <div class="fnji-massive-text">CUSTOM<br>FURNITURES</div>
+        <div class="fnji-bottom">
+            <p>Copyright 2026, All Right Reserved</p>
+        </div>
+    </footer>
+
+    <!-- Review Lightbox Overlay -->
+    <div class="lightbox-overlay" id="review-lightbox" style="display:none;">
+        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
+        <div class="lightbox-content">
+            <img class="lightbox-img" src="" alt="Enlarged review photo">
+        </div>
+        <button class="lightbox-next" aria-label="Next image">&#10095;</button>
+    </div>
+
+    <script src="js/lang.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner-hidden">
+      <div class="cookie-banner-content">
+        <p class="lang-bg">Този сайт използва бисквитки за анализи и подобряване на потребителското изживяване. Прочетете нашата <a href="/privacy">Политика за поверителност</a>.</p>
+        <p class="lang-en">This website uses cookies for analytics and to improve your experience. Read our <a href="/privacy">Privacy Policy</a>.</p>
+        
+        <div class="cookie-banner-buttons">
+          <button id="accept-cookies" class="cookie-btn cookie-btn-accept lang-bg">Приемам всички</button>
+          <button id="decline-cookies" class="cookie-btn cookie-btn-decline lang-bg">Отказвам</button>
+          
+          <button id="accept-cookies-en" class="cookie-btn cookie-btn-accept lang-en">Accept all</button>
+          <button id="decline-cookies-en" class="cookie-btn cookie-btn-decline lang-en">Decline</button>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      /* Control visibility based on root lang attribute */
+      html[lang="bg"] .lang-en { display: none !important; }
+      html[lang="en"] .lang-bg { display: none !important; }
+
+      /* Стилизиране на банера */
+      #cookie-banner {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 650px;
+        background-color: #1a1a1a;
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        z-index: 99999;
+        font-family: sans-serif;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+      .cookie-banner-hidden {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-50%, 20px) !important;
+      }
+      .cookie-banner-content {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+      .cookie-banner-content p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .cookie-banner-content a {
+        color: #4da6ff;
+        text-decoration: underline;
+      }
+      .cookie-banner-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+      .cookie-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .cookie-btn-accept {
+        background-color: #ffffff;
+        color: #000000;
+      }
+      .cookie-btn-accept:hover {
+        background-color: #e0e0e0;
+      }
+      .cookie-btn-decline {
+        background-color: #333333;
+        color: #ffffff;
+      }
+      .cookie-btn-decline:hover {
+        background-color: #444444;
+      }
+      @media (min-width: 768px) {
+        .cookie-banner-content {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          text-align: left;
+        }
+        .cookie-banner-buttons {
+          flex-shrink: 0;
+        }
+      }
+    </style>
+
+    <script>
+        lucide.createIcons();
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const banner = document.getElementById("cookie-banner");
+          
+          // Бутони БГ
+          const acceptBtnBg = document.getElementById("accept-cookies");
+          const declineBtnBg = document.getElementById("decline-cookies");
+          
+          // Бутони EN
+          const acceptBtnEn = document.getElementById("accept-cookies-en");
+          const declineBtnEn = document.getElementById("decline-cookies-en");
+
+          function activateScripts() {
+            const scripts = document.querySelectorAll(".analytics-script");
+            scripts.forEach(oldScript => {
+              const newScript = document.createElement("script");
+              Array.from(oldScript.attributes).forEach(attr => {
+                if (attr.name !== "type" && attr.name !== "class") {
+                  newScript.setAttribute(attr.name, attr.value);
+                }
+              });
+              newScript.innerHTML = oldScript.innerHTML;
+              oldScript.parentNode.insertBefore(newScript, oldScript);
+              oldScript.remove();
+            });
+          }
+
+          // 1. Проверка за съгласие
+          const consent = localStorage.getItem("cookieConsent");
+
+          if (!consent) {
+            setTimeout(() => {
+              if (banner) banner.classList.remove("cookie-banner-hidden");
+            }, 1000);
+          } else if (consent === "accepted") {
+            activateScripts();
+          }
+
+          // Обща функция за приемане
+          function handleAccept() {
+            localStorage.setItem("cookieConsent", "accepted");
+            if (banner) banner.classList.add("cookie-banner-hidden");
+            activateScripts();
+          }
+
+          // Обща функция за отказ
+          function handleDecline() {
+            localStorage.setItem("cookieConsent", "declined");
+            if (banner) banner.classList.add("cookie-banner-hidden");
+          }
+
+          // Закачаме събитията за BG бутоните
+          if (acceptBtnBg) acceptBtnBg.addEventListener("click", handleAccept);
+          if (declineBtnBg) declineBtnBg.addEventListener("click", handleDecline);
+
+          // Закачаме събитията за EN бутоните
+          if (acceptBtnEn) acceptBtnEn.addEventListener("click", handleAccept);
+          if (declineBtnEn) declineBtnEn.addEventListener("click", handleDecline);
+        });
+    </script>
+</body>
+</html>
+
+    

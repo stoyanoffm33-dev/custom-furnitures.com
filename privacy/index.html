@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Custom Furnitures - Premium Bespoke Living</title>
+    <meta name="title" content="Custom Furnitures - Premium Bespoke Living">
+    <meta name="description" content="Discover our premium bespoke furniture solutions that bring a minimalist and luxurious look to your home. Quiet, natural, and meaningful living.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://custom-furnitures.com/">
+    <meta property="og:title" content="Custom Furnitures - Premium Bespoke Living">
+    <meta property="og:description" content="Discover our premium bespoke furniture solutions that bring a minimalist and luxurious look to your home. Quiet, natural, and meaningful living.">
+    <meta property="og:image" content="https://custom-furnitures.com/assets/logo-wide-no-bg.png">
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/favicon.png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* Additional custom styles for new sections */
+        .header-btn {
+            margin-left: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--text-main);
+            color: #fff;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        .benefits-section {
+            padding: 0 var(--container-padding);
+            max-width: 1600px;
+            margin: -2rem auto 5rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+        .benefit-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            flex: 1;
+            text-align: center;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .philosophy-section {
+            padding: 5rem var(--container-padding);
+            max-width: 1000px;
+            margin: 0 auto 6rem;
+            text-align: center;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 0 var(--container-padding);
+            max-width: 1600px;
+            margin: 0 auto 6rem;
+        }
+        .category-card {
+            background: var(--card-gray);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .category-card:hover { transform: translateY(-5px); }
+        .category-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .category-card p { margin-bottom: 2rem; }
+        
+        .case-study-section {
+            padding: 0 var(--container-padding);
+            max-width: 1600px;
+            margin: 0 auto 6rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .case-study-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+        }
+        .case-study-content h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+        .case-study-content p { margin-bottom: 1rem; font-size: 1.1rem; }
+        .case-study-content strong { color: var(--text-main); }
+        
+        .contact-section {
+            padding: 0 var(--container-padding);
+            max-width: 800px;
+            margin: 0 auto 8rem;
+        }
+        .contact-form-wrapper {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+        }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .form-group input[type="file"] { padding: 0.8rem; border: none; background: var(--card-gray); }
+        .footer-simple {
+            text-align: center;
+            padding-bottom: 4rem;
+        }
+        .footer-simple p { margin-bottom: 0.5rem; }
+        .footer-links { margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; }
+        .footer-links a:hover { color: var(--text-main); }
+        
+        /* Slider Sections */
+        .reviews-section, .previews-section {
+            padding: 0 var(--container-padding);
+            max-width: 1600px;
+            margin: 0 auto 6rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-main);
+        }
+
+        .slider-container {
+            width: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            padding-bottom: 1rem;
+        }
+        .slider-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 2rem;
+            width: max-content;
+        }
+
+        /* Review Card */
+        .review-card {
+            background: var(--card-gray);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            width: 350px;
+            scroll-snap-align: start;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .review-stars {
+            color: #9d814c;
+            font-size: 1.25rem;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            flex-grow: 1;
+            font-style: italic;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            margin: 0;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .author-info span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Preview Sliders */
+        .preview-category-block {
+            margin-bottom: 4rem;
+        }
+
+        .preview-category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-right: 1rem;
+        }
+
+        .preview-category-header h3 {
+            font-size: 1.75rem;
+            color: var(--text-main);
+        }
+        
+        .preview-category-header .view-all {
+            color: #9d814c;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.3s ease;
+        }
+        
+        .preview-category-header .view-all:hover {
+            opacity: 0.8;
+        }
+
+        .preview-img-wrapper {
+            width: 400px;
+            height: 300px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            scroll-snap-align: start;
+            cursor: pointer;
+            position: relative;
+            display: block;
+        }
+
+        .preview-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .preview-img-wrapper:hover img {
+            transform: scale(1.05);
+        }
+        
+        .preview-img-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.2), transparent 50%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .preview-img-wrapper:hover::after {
+            opacity: 1;
+        }
+        
+        /* Hero Video Styles */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .mobile-video {
+            display: none;
+        }
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .desktop-video { display: none; }
+            .mobile-video { display: block; }
+            .review-card {
+                width: 280px;
+                padding: 1.5rem;
+            }
+            .preview-img-wrapper {
+                width: 280px;
+                height: 220px;
+            }
+            .preview-category-header h3 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="/assets/logo-wide-no-bg.png" alt="Custom Furnitures" class="logo-img">
+            </a>
+            <div class="nav-links">
+                <a href="/" data-i18n="nav_home">Home</a>
+                <a href="/kitchen" data-href-bg="/kuhnya" data-href-en="/kitchen" data-i18n="nav_kitchen">Kitchen</a>
+                <a href="/bedroom" data-href-bg="/spalnya" data-href-en="/bedroom" data-i18n="nav_bedroom">Bedroom</a>
+                <a href="/livingroom" data-href-bg="/vsekidnevna" data-href-en="/livingroom" data-i18n="nav_living">Living Room</a>
+                <a href="/kids-rooms" data-href-bg="/detski-stai" data-href-en="/kids-rooms" data-i18n="nav_kids">Kids' Room</a>
+                <a href="/bathroom" data-href-bg="/banya" data-href-en="/bathroom" data-i18n="nav_bathroom">Bathroom</a>
+                <a href="/#contact" data-i18n="nav_contact">Contacts</a>
+            </div>
+            <div class="nav-icons">
+                <div class="lang-switch">
+                    <button id="lang-en" class="lang-btn active">EN</button>
+                    <span class="separator">|</span>
+                    <button id="lang-bg" class="lang-btn">BG</button>
+                </div>
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="header-btn" style="background: transparent; border: 1px solid var(--border-color); color: var(--text-main); margin-right: 0.5rem; padding: 0.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; cursor: pointer;"><i data-lucide="moon"></i></button>
+                <a href="tel:00359878359358" class="header-btn call-btn desktop-only" style="background: transparent; border: 1px solid var(--border-color); color: var(--text-main); margin-right: 0.5rem;"><i data-lucide="phone"></i></a>
+                <a href="/#contact" class="header-btn desktop-only" data-i18n="btn_header_quote">Request a Quote</a>
+                <button class="burger-btn" id="burger-menu-btn"><i data-lucide="menu"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu-overlay" id="mobile-overlay">
+        <div class="mobile-menu" id="mobile-menu">
+            <button class="close-menu" id="close-menu-btn"><i data-lucide="x"></i></button>
+            <a href="/" data-i18n="nav_home">Home</a>
+            <a href="/kitchen" data-href-bg="/kuhnya" data-href-en="/kitchen" data-i18n="nav_kitchen">Kitchen</a>
+            <a href="/bedroom" data-href-bg="/spalnya" data-href-en="/bedroom" data-i18n="nav_bedroom">Bedroom</a>
+            <a href="/livingroom" data-href-bg="/vsekidnevna" data-href-en="/livingroom" data-i18n="nav_living">Living Room</a>
+            <a href="/kids-rooms" data-href-bg="/detski-stai" data-href-en="/kids-rooms" data-i18n="nav_kids">Kids' Room</a>
+            <a href="/bathroom" data-href-bg="/banya" data-href-en="/bathroom" data-i18n="nav_bathroom">Bathroom</a>
+            <a href="/#contact" data-i18n="nav_contact">Contacts</a>
+            <div class="nav-buttons">
+                <a href="tel:00359878359358" class="btn-light">
+                    <i data-lucide="phone" style="width: 20px;"></i>
+                    <span data-i18n="btn_hero_call">Call Us</span>
+                </a>
+                <a href="/#contact-form" class="btn-dark" data-i18n="btn_header_quote">Request a Quote</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        
+        <section class="page-header" style="padding: 4rem var(--container-padding) 2rem; text-align: center;">
+            <h1 class="premium-heading lang-bg" style="font-size: 2.5rem; display: inline-block;">Политика за Поверителност</h1>
+            <h1 class="premium-heading lang-en" style="font-size: 2.5rem; display: inline-block;">Privacy Policy</h1>
+        </section>
+        
+        <section class="legal-section" style="padding: 2rem var(--container-padding) 6rem; max-width: 800px; margin: 0 auto; line-height: 1.8; color: var(--text-main);">
+            <style>
+                .legal-section h2 {
+                    font-size: 1.8rem;
+                    font-weight: 500;
+                    margin-top: 0;
+                    margin-bottom: 2rem;
+                    color: var(--text-main);
+                    border-bottom: 1px solid var(--border-color);
+                    padding-bottom: 0.5rem;
+                }
+                .legal-section h3 {
+                    font-size: 1.3rem;
+                    font-weight: 500;
+                    margin-top: 2rem;
+                    margin-bottom: 1rem;
+                    color: var(--text-main);
+                }
+                .legal-section p, .legal-section ul {
+                    margin-bottom: 1.5rem;
+                    font-size: 1rem;
+                    color: var(--text-muted);
+                }
+                .legal-section ul {
+                    padding-left: 1.5rem;
+                }
+                .legal-section li {
+                    margin-bottom: 0.5rem;
+                }
+            </style>
+            <div class="lang-bg">
+                <h2>ПОЛИТИКА ЗА ПОВЕРИТЕЛНОСТ</h2>
+                <p>„БАУ МИТ ЗЮТ АГ“ ЕООД зачита поверителността на вашите лични данни и се ангажира с тяхната защита в съответствие с Общия регламент за защита на данните (GDPR).</p>
+                
+                <h3>1. Администратор на лични данни</h3>
+                <p>Администратор на данните е „БАУ МИТ ЗЮТ АГ“ ЕООД, ЕИК 202362784, със седалище и адрес на управление: гр. София, ж.к. Младост 2, бл. 225, вх. А, 1799.</p>
+                <p><strong>Електронна поща за въпроси относно лични данни:</strong> <a href="mailto:info@custom-furnitures.com" style="color: #9d814c; text-decoration: underline;">info@custom-furnitures.com</a></p>
+
+                <h3>2. Какви данни събираме и защо</h3>
+                <p>Когато използвате нашата форма за запитване на custom-furnitures.com, ние събираме следните данни:</p>
+                <ul>
+                    <li><strong>Име и фамилия</strong> – за да знаем как да се обърнем към вас.</li>
+                    <li><strong>Телефонен номер</strong> – за бърза връзка и уговаряне на оглед.</li>
+                    <li><strong>Имейл адрес</strong> – за изпращане на оферти и визуализации.</li>
+                    <li><strong>Текст на запитването</strong> – съдържащ информация за вашите предпочитания, размери и нужди.</li>
+                </ul>
+
+                <h3>3. Правно основание за обработка</h3>
+                <p>Ние обработваме вашите данни на основание предприемане на стъпки по сключване на договор за изработка на мебели по ваше искане (чл. 6, ал. 1, б. "б" от GDPR).</p>
+
+                <h3>4. Споделяне на данните с трети лица</h3>
+                <p>Ние НЕ продаваме и не предоставяме вашите данни за маркетингови цели на трети страни. Те могат да бъдат споделени само със:</p>
+                <ul>
+                    <li>Служители или подизпълнители на фирмата (дизайнери, монтажници), пряко ангажирани с вашия проект.</li>
+                    <li>Счетоводна къща за целите на издаване на фактури.</li>
+                    <li>Хостинг доставчика, на чиито сървъри се намира този уебсайт.</li>
+                </ul>
+
+                <h3>5. Срок на съхранение</h3>
+                <p>Ако запитването не премине в реална поръчка, вашите данни се изтриват в срок от 6 месеца.</p>
+                <p>При сключване на договор, данните се пазят за законовия счетоводен срок от 10 години.</p>
+
+                <h3>6. Вашите права</h3>
+                <p>Като субект на данни имате следните права по всяко време:</p>
+                <ul>
+                    <li>Право на достъп и копие от данните ви.</li>
+                    <li>Право на коригиране на неточни данни.</li>
+                    <li>Право на изтриване ("право да бъдете забравени").</li>
+                    <li>Право да подадете жалба до Комисията за защита на личните данни (КЗЛД) при установено нарушение.</li>
+                </ul>
+            </div>
+            <div class="lang-en">
+                <h2>PRIVACY POLICY</h2>
+                <p>"BAU MIT SUED AG" Ltd. respects the privacy of your personal data and is committed to protecting it in accordance with the General Data Protection Regulation (GDPR).</p>
+                
+                <h3>1. Data Controller</h3>
+                <p>The data controller is "BAU MIT SUED AG" Ltd., UIC BG202362784, based in Mladost 2, bl. 225, ent. A, 1799 Sofia.</p>
+                <p><strong>Email for data inquiries:</strong> <a href="mailto:info@custom-furnitures.com" style="color: #9d814c; text-decoration: underline;">info@custom-furnitures.com</a></p>
+
+                <h3>2. What Data We Collect and Why</h3>
+                <p>When you use our inquiry form on custom-furnitures.com, we collect the following data:</p>
+                <ul>
+                    <li><strong>Name and surname</strong> – to know how to address you.</li>
+                    <li><strong>Phone number</strong> – for quick communication and arranging a site inspection.</li>
+                    <li><strong>Email address</strong> – for sending offers and design visualizations.</li>
+                    <li><strong>Message text</strong> – containing information about your preferences, measurements, and needs.</li>
+                </ul>
+
+                <h3>3. Legal Basis for Processing</h3>
+                <p>We process your data on the basis of taking steps at the request of the data subject prior to entering into a contract for custom furniture manufacturing (Art. 6, paragraph 1, b. "b" of the GDPR).</p>
+
+                <h3>4. Data Sharing with Third Parties</h3>
+                <p>We DO NOT sell or share your data with third parties for marketing purposes. It may only be shared with:</p>
+                <ul>
+                    <li>Employees or subcontractors of the company (designers, installers) directly involved in your project.</li>
+                    <li>An accounting agency for the purpose of issuing invoices.</li>
+                    <li>The hosting provider on whose servers this website is located.</li>
+                    <li>The hosting provider on whose servers this website is located.</li>
+                </ul>
+
+                <h3>5. Retention Period</h3>
+                <p>If the inquiry does not lead to a contract, your data will be deleted within 6 months.</p>
+                <p>Upon entering into a contract, the data is kept for the legal accounting period of 10 years.</p>
+
+                <h3>6. Your Rights</h3>
+                <p>As a data subject, you have the following rights at any time:</p>
+                <ul>
+                    <li>The right to access and receive a copy of your data.</li>
+                    <li>The right to rectify inaccurate data.</li>
+                    <li>The right to erasure ("the right to be forgotten").</li>
+                    <li>The right to lodge a complaint with the Commission for Personal Data Protection (CPDP) or your local supervisory authority in case of a violation.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+<footer class="site-footer fnji-footer">
+        <div class="fnji-top">
+            <div class="fnji-col">
+                <h3 data-i18n="footer_title">Quiet, Natural,<br>Meaningful Living</h3>
+                <p data-i18n="footer_desc" style="margin-top: 1rem; color: #a0a0a0;">Custom Furnitures is a lifestyle brand crafting quiet,<br>natural furniture for everyday living.</p>
+                <div class="social-icons" style="margin-top: 2rem; display: flex; gap: 1.5rem; align-items: center;">
+                    <a href="https://www.facebook.com/" target="_blank" class="social-link">
+                        <img src="/assets/fb-logo.png" alt="Facebook">
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="social-link">
+                        <img src="/assets/ig-logo.png" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+            <div class="fnji-col">
+                <h4 data-i18n="footer_quick">Quick Link</h4>
+                <a href="/" data-i18n="footer_home">Home</a>
+                <a href="/#quality-section" data-i18n="footer_product">Our Product</a>
+                <a href="/#our-projects" data-i18n="footer_featured">Featured Project</a>
+                <a href="/#contact-form" data-i18n="footer_contact">Contact</a>
+                <a href="/review" data-i18n="footer_leave_review">Leave us a review</a>
+            </div>
+            <div class="fnji-col">
+                <h4 data-i18n="footer_categories">Categories</h4>
+                <a href="/kitchen" data-href-bg="/kuhnya" data-href-en="/kitchen" data-i18n="nav_kitchen">Kitchen</a>
+                <a href="/bedroom" data-href-bg="/spalnya" data-href-en="/bedroom" data-i18n="nav_bedroom">Bedroom</a>
+                <a href="/livingroom" data-href-bg="/vsekidnevna" data-href-en="/livingroom" data-i18n="nav_living">Living Room</a>
+                <a href="/kids-rooms" data-href-bg="/detski-stai" data-href-en="/kids-rooms" data-i18n="nav_kids">Kids' Room</a>
+                <a href="/bathroom" data-href-bg="/banya" data-href-en="/bathroom" data-i18n="nav_bathroom">Bathroom</a>
+            </div>
+            <div class="fnji-col">
+                <h4 data-i18n="footer_loc_heading">Location</h4>
+                <p style="color: #a0a0a0; margin-bottom: 1rem;" data-i18n="footer_office">Office (Sofia): Mladost 2, bl. 225, 1799 Sofia, Bulgaria</p>
+                <p style="color: #a0a0a0;" data-i18n="footer_prod">Production (Vidin): West Storage Zone, 3700 Vidin, Bulgaria</p>
+                <a href="https://maps.app.goo.gl/4PCbvTsZhxR5nKgP8" target="_blank" style="color: #9d814c; text-decoration: underline; font-size: 0.9rem; margin-top: 0.5rem; display: inline-block;" data-i18n="footer_maps_btn">Google Maps Directions</a>
+            </div>
+            <div class="fnji-col">
+                <h4 data-i18n="footer_legal">Legal</h4>
+                <a href="/terms" data-i18n="footer_terms">Terms & Conditions</a>
+                <a href="/privacy" data-i18n="footer_privacy">Privacy Policy</a>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem;">
+                    <a href="tel:00359878359358" class="btn-light" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; padding: 0.8rem;"><i data-lucide="phone" style="width: 16px;"></i> <span data-i18n="btn_hero_call">Call Us</span></a>
+                    <a href="/#contact-form" class="btn-dark" style="display: flex; align-items: center; justify-content: center; background: var(--text-main); color: var(--bg-color); padding: 0.8rem;" data-i18n="btn_header_quote">Request a Quote</a>
+                </div>
+            </div>
+        </div>
+        <div class="fnji-massive-text">CUSTOM<br>FURNITURES</div>
+        <div class="fnji-bottom">
+            <p>Copyright 2026, All Right Reserved</p>
+        </div>
+    </footer>
+
+    <!-- Review Lightbox Overlay -->
+    <div class="lightbox-overlay" id="review-lightbox" style="display:none;">
+        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
+        <div class="lightbox-content">
+            <img class="lightbox-img" src="" alt="Enlarged review photo">
+        </div>
+        <button class="lightbox-next" aria-label="Next image">&#10095;</button>
+    </div>
+
+    <script src="/js/lang.js"></script>
+    <script src="/js/app.js"></script>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner-hidden">
+      <div class="cookie-banner-content">
+        <p class="lang-bg">Този сайт използва бисквитки за анализи и подобряване на потребителското изживяване. Прочетете нашата <a href="/privacy">Политика за поверителност</a>.</p>
+        <p class="lang-en">This website uses cookies for analytics and to improve your experience. Read our <a href="/privacy">Privacy Policy</a>.</p>
+        
+        <div class="cookie-banner-buttons">
+          <button id="accept-cookies" class="cookie-btn cookie-btn-accept lang-bg">Приемам всички</button>
+          <button id="decline-cookies" class="cookie-btn cookie-btn-decline lang-bg">Отказвам</button>
+          
+          <button id="accept-cookies-en" class="cookie-btn cookie-btn-accept lang-en">Accept all</button>
+          <button id="decline-cookies-en" class="cookie-btn cookie-btn-decline lang-en">Decline</button>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      /* Control visibility based on root lang attribute */
+      html[lang="bg"] .lang-en { display: none !important; }
+      html[lang="en"] .lang-bg { display: none !important; }
+
+      /* Стилизиране на банера */
+      #cookie-banner {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 650px;
+        background-color: #1a1a1a;
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        z-index: 99999;
+        font-family: sans-serif;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+      .cookie-banner-hidden {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-50%, 20px) !important;
+      }
+      .cookie-banner-content {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+      .cookie-banner-content p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .cookie-banner-content a {
+        color: #4da6ff;
+        text-decoration: underline;
+      }
+      .cookie-banner-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+      .cookie-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .cookie-btn-accept {
+        background-color: #ffffff;
+        color: #000000;
+      }
+      .cookie-btn-accept:hover {
+        background-color: #e0e0e0;
+      }
+      .cookie-btn-decline {
+        background-color: #333333;
+        color: #ffffff;
+      }
+      .cookie-btn-decline:hover {
+        background-color: #444444;
+      }
+      @media (min-width: 768px) {
+        .cookie-banner-content {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          text-align: left;
+        }
+        .cookie-banner-buttons {
+          flex-shrink: 0;
+        }
+      }
+    </style>
+
+    <script>
+        lucide.createIcons();
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const banner = document.getElementById("cookie-banner");
+          
+          // Бутони БГ
+          const acceptBtnBg = document.getElementById("accept-cookies");
+          const declineBtnBg = document.getElementById("decline-cookies");
+          
+          // Бутони EN
+          const acceptBtnEn = document.getElementById("accept-cookies-en");
+          const declineBtnEn = document.getElementById("decline-cookies-en");
+
+          function activateScripts() {
+            const scripts = document.querySelectorAll(".analytics-script");
+            scripts.forEach(oldScript => {
+              const newScript = document.createElement("script");
+              Array.from(oldScript.attributes).forEach(attr => {
+                if (attr.name !== "type" && attr.name !== "class") {
+                  newScript.setAttribute(attr.name, attr.value);
+                }
+              });
+              newScript.innerHTML = oldScript.innerHTML;
+              oldScript.parentNode.insertBefore(newScript, oldScript);
+              oldScript.remove();
+            });
+          }
+
+          // 1. Проверка за съгласие
+          const consent = localStorage.getItem("cookieConsent");
+
+          if (!consent) {
+            setTimeout(() => {
+              if (banner) banner.classList.remove("cookie-banner-hidden");
+            }, 1000);
+          } else if (consent === "accepted") {
+            activateScripts();
+          }
+
+          // Обща функция за приемане
+          function handleAccept() {
+            localStorage.setItem("cookieConsent", "accepted");
+            if (banner) banner.classList.add("cookie-banner-hidden");
+            activateScripts();
+          }
+
+          // Обща функция за отказ
+          function handleDecline() {
+            localStorage.setItem("cookieConsent", "declined");
+            if (banner) banner.classList.add("cookie-banner-hidden");
+          }
+
+          // Закачаме събитията за BG бутоните
+          if (acceptBtnBg) acceptBtnBg.addEventListener("click", handleAccept);
+          if (declineBtnBg) declineBtnBg.addEventListener("click", handleDecline);
+
+          // Закачаме събитията за EN бутоните
+          if (acceptBtnEn) acceptBtnEn.addEventListener("click", handleAccept);
+          if (declineBtnEn) declineBtnEn.addEventListener("click", handleDecline);
+        });
+    </script>
+</body>
+</html>
