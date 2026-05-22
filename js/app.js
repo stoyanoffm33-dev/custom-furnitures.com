@@ -144,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.documentElement.lang = lang;
+        renderReviews();
     }
 
     // Initialize Reviews and Language
@@ -743,10 +744,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 email: emailVal,
                 message: messageVal,
                 itemUrl: window.location.href,
-                imageUrl: imageUrlVal
+                imageUrl: imageUrlVal,
+                toEmail: 'office@custom-furnitures.com'
             };
 
-            fetch('https://script.google.com/macros/s/AKfycbz9PXB_gmyryCVMnKlWoN0g42GvWkkcD8cn4JTKd7RHLObNOWRkYjq_4cis8MjlFB6_EA/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbxa2-eQi7nOfTRqXyKqBTdZs0kZotPyQSLVWpEfn6q8Cs-C_561aAEjz5nT1bcN88HO0w/exec', {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: {

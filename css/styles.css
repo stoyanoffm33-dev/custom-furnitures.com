@@ -696,9 +696,12 @@ p {
     .footer-columns { grid-template-columns: repeat(2, 1fr); }
 }
 
+@media (max-width: 1024px) {
+    .nav-links { display: none; }
+}
+
 @media (max-width: 768px) {
     h1 { font-size: 2.5rem; }
-    .nav-links { display: none; }
     .hero-card { padding: 2rem; min-height: 400px; height: 60vh; }
     .hero-content h1 { font-size: 2rem; }
     
@@ -1029,13 +1032,17 @@ p {
     height: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .burger-btn { display: block; }
     .desktop-only { display: none !important; }
     .mobile-menu {
-        width: 70vw;
-        right: -70vw;
+        width: 350px;
+        max-width: 85vw;
+        right: -370px;
     }
+}
+
+@media (max-width: 768px) {
     
     /* Benefits Marquee */
     .benefits-section {

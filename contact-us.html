@@ -316,7 +316,7 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <img src="assets/logo-wide-no-bg.png" alt="Custom Furnitures" class="logo-img">
             </a>
             <div class="nav-links">
@@ -336,10 +336,32 @@
                 </div>
                 <!-- Theme Toggle -->
                 <button id="theme-toggle" class="header-btn" style="background: transparent; border: 1px solid var(--border-color); color: var(--text-main); margin-right: 0.5rem; padding: 0.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; cursor: pointer;"><i data-lucide="moon"></i></button>
-                <a href="#contact" class="header-btn" data-i18n="btn_header_quote">Request a Quote</a>
+                <a href="tel:00359878359358" class="header-btn call-btn desktop-only" style="background: transparent; border: 1px solid var(--border-color); color: var(--text-main); margin-right: 0.5rem;"><i data-lucide="phone"></i></a>
+                <a href="#contact" class="header-btn desktop-only" data-i18n="btn_header_quote">Request a Quote</a>
+                <button class="burger-btn" id="burger-menu-btn"><i data-lucide="menu"></i></button>
             </div>
         </div>
     </nav>
+
+    <div class="mobile-menu-overlay" id="mobile-overlay">
+        <div class="mobile-menu" id="mobile-menu">
+            <button class="close-menu" id="close-menu-btn"><i data-lucide="x"></i></button>
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="kitchen.html" data-href-bg="kuhnya.html" data-href-en="kitchen.html" data-i18n="nav_kitchen">Kitchen</a>
+            <a href="bedroom.html" data-href-bg="spalnya.html" data-href-en="bedroom.html" data-i18n="nav_bedroom">Bedroom</a>
+            <a href="livingroom.html" data-href-bg="vsekidnevna.html" data-href-en="livingroom.html" data-i18n="nav_living">Living Room</a>
+            <a href="kids-rooms.html" data-href-bg="detski-stai.html" data-href-en="kids-rooms.html" data-i18n="nav_kids">Kids' Rooms</a>
+            <a href="bathroom.html" data-href-bg="banya.html" data-href-en="bathroom.html" data-i18n="nav_bathroom">Bathroom</a>
+            <a href="contact-us.html" data-i18n="nav_contact" data-href-en="contact-us.html" data-href-bg="contact-us.html">Contacts</a>
+            <div class="nav-buttons">
+                <a href="tel:00359878359358" class="btn-light">
+                    <i data-lucide="phone" style="width: 20px;"></i>
+                    <span data-i18n="btn_hero_call">Call Us</span>
+                </a>
+                <a href="#contact" class="btn-dark" data-i18n="btn_header_quote">Request a Quote</a>
+            </div>
+        </div>
+    </div>
 
     <main class="main-content">
         <!-- Hero Section -->
@@ -385,56 +407,9 @@
             <div class="section-header">
                 <h2 data-i18n="reviews_heading">What Our Clients Say</h2>
             </div>
-            <div class="slider-container">
-                <div class="slider-track">
-                    <!-- Review 1 -->
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text" data-i18n="review_placeholder_1">"Exceptional quality and attention to detail. The team was highly professional from the initial 3D design to the final installation."</p>
-                        <div class="review-author">
-                            <div class="author-photo"></div>
-                            <div class="author-info">
-                                <h4 data-i18n="review_name_1">Client Name</h4>
-                                <span data-i18n="review_role_1">Sofia</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Review 2 -->
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text" data-i18n="review_placeholder_2">"They transformed our kitchen into a masterpiece. Functionality and aesthetics perfectly balanced."</p>
-                        <div class="review-author">
-                            <div class="author-photo"></div>
-                            <div class="author-info">
-                                <h4 data-i18n="review_name_2">Client Name</h4>
-                                <span data-i18n="review_role_2">Plovdiv</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Review 3 -->
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text" data-i18n="review_placeholder_3">"Highly recommend! The custom wardrobe fits perfectly and the materials used are top notch."</p>
-                        <div class="review-author">
-                            <div class="author-photo"></div>
-                            <div class="author-info">
-                                <h4 data-i18n="review_name_3">Client Name</h4>
-                                <span data-i18n="review_role_3">Varna</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Review 4 -->
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text" data-i18n="review_placeholder_4">"Great communication and flawless execution. Our living room looks like it belongs in a magazine."</p>
-                        <div class="review-author">
-                            <div class="author-photo"></div>
-                            <div class="author-info">
-                                <h4 data-i18n="review_name_4">Client Name</h4>
-                                <span data-i18n="review_role_4">Burgas</span>
-                            </div>
-                        </div>
-                    </div>
+            <div class="slider-container reviews-slider-container">
+                <div class="slider-track" id="reviews-slider-track">
+                    <!-- Dynamic reviews will be loaded here -->
                 </div>
             </div>
         </section>
