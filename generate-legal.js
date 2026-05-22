@@ -112,7 +112,7 @@ const termsBody = `
                 <strong>ЕИК/Булстат:</strong> 202362784<br>
                 <strong>Седалище и адрес на управление:</strong> гр. София, ж.к. Младост 2, бл. 225, вх. А, 1799<br>
                 <strong>МОЛ:</strong> Недко Станков<br>
-                <strong>Електронна поща:</strong> <a href="mailto:info@custom-furnitures.com" style="color: #9d814c; text-decoration: underline;">info@custom-furnitures.com</a><br>
+                <strong>Електронна поща:</strong> <a href="mailto:office@custom-furnitures.com" style="color: #9d814c; text-decoration: underline;">office@custom-furnitures.com</a><br>
                 <strong>Телефон:</strong> +359878359358</p>
 
                 <h3>2. Предмет и дефиниции</h3>
@@ -148,7 +148,7 @@ const termsBody = `
                 <strong>UIC/VAT Number:</strong> BG202362784<br>
                 <strong>Registered Office Address:</strong> Mladost 2, bl. 225, ent. A, 1799 Sofia<br>
                 <strong>Management:</strong> Nedko Stankov<br>
-                <strong>Contact Email:</strong> <a href="mailto:info@custom-furnitures.com" style="color: #9d814c; text-decoration: underline;">info@custom-furnitures.com</a><br>
+                <strong>Contact Email:</strong> <a href="mailto:office@custom-furnitures.com" style="color: #9d814c; text-decoration: underline;">office@custom-furnitures.com</a><br>
                 <strong>Phone:</strong> +359878359358</p>
 
                 <h3>2. Subject and Definitions</h3>
@@ -222,7 +222,7 @@ const privacyBody = `
                 
                 <h3>1. Администратор на лични данни</h3>
                 <p>Администратор на данните е „БАУ МИТ ЗЮТ АГ“ ЕООД, ЕИК 202362784, със седалище и адрес на управление: гр. София, ж.к. Младост 2, бл. 225, вх. А, 1799.</p>
-                <p><strong>Електронна поща за въпроси относно лични данни:</strong> <a href="mailto:info@custom-furnitures.com" style="color: #9d814c; text-decoration: underline;">info@custom-furnitures.com</a></p>
+                <p><strong>Електронна поща за въпроси относно лични данни:</strong> <a href="mailto:office@custom-furnitures.com" style="color: #9d814c; text-decoration: underline;">office@custom-furnitures.com</a></p>
 
                 <h3>2. Какви данни събираме и защо</h3>
                 <p>Когато използвате нашата форма за запитване на custom-furnitures.com, ние събираме следните данни:</p>
@@ -263,7 +263,7 @@ const privacyBody = `
                 
                 <h3>1. Data Controller</h3>
                 <p>The data controller is "BAU MIT SUED AG" Ltd., UIC BG202362784, based in Mladost 2, bl. 225, ent. A, 1799 Sofia.</p>
-                <p><strong>Email for data inquiries:</strong> <a href="mailto:info@custom-furnitures.com" style="color: #9d814c; text-decoration: underline;">info@custom-furnitures.com</a></p>
+                <p><strong>Email for data inquiries:</strong> <a href="mailto:office@custom-furnitures.com" style="color: #9d814c; text-decoration: underline;">office@custom-furnitures.com</a></p>
 
                 <h3>2. What Data We Collect and Why</h3>
                 <p>When you use our inquiry form on custom-furnitures.com, we collect the following data:</p>

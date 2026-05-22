@@ -324,6 +324,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         } catch (err) {
                             // Fallback
                         }
+                        if (imagePath.startsWith('/custom-furnitures.com/')) {
+                            imagePath = imagePath.substring('/custom-furnitures.com'.length);
+                        }
                         if (!imagePath.startsWith('/')) {
                             imagePath = '/' + imagePath;
                         }
